@@ -7331,7 +7331,7 @@ a.anchor-link {
     if (!diagrams.length) {
       return;
     }
-    const mermaid = (await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.3.1/mermaid.esm.min.mjs")).default;
+    const mermaid = (await import("https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.7.0/mermaid.esm.min.mjs")).default;
     const parser = new DOMParser();
 
     mermaid.initialize({
@@ -7591,6 +7591,10 @@ a.anchor-link {
 <li>Parsing the JSON response</li>
 <li>Creating a pandas DataFrame from the parsed data</li>
 </ol>
+<p>Flowchart:</p>
+<p><code>[Start] -&gt; [Make GET request to SpaceX API] -&gt; [Parse JSON response] -&gt; [Create pandas DataFrame] -&gt; [End]</code></p>
+<p>Key phrases: REST API, JSON parsing, DataFrame creation</p>
+<p>GitHub URL: <a href="https://github.com/jacobsterling/data-science/blob/main/spacex_project/Module1_Lab1_spacex_data_collection_api.ipynb">SpaceX API Data Collection Lab</a></p>
 <p>Key code snippet:</p>
 <div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">"https://api.spacexdata.com/v4/launches/past"</span>
 
@@ -7606,6 +7610,10 @@ a.anchor-link {
 <li>Extracting the relevant table data</li>
 <li>Converting the extracted data into a pandas DataFrame</li>
 </ol>
+<p>Flowchart:</p>
+<p><code>[Start] -&gt; [Send GET request to Wikipedia] -&gt; [Parse HTML with BeautifulSoup] -&gt; [Extract table data] -&gt; [Create pandas DataFrame] -&gt; [End]</code></p>
+<p>Key phrases: Web scraping, HTML parsing, BeautifulSoup, table extraction</p>
+<p>GitHub URL: <a href="https://github.com/jacobsterling/data-science/blob/main/spacex_project/Module1_webscraping.ipynb">Web Scraping Lab</a></p>
 <p>Key code snippet:</p>
 <div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">"https://en.wikipedia.org/w/index.php?title=List_of_Falcon_9_and_Falcon_Heavy_launches"</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
@@ -7614,6 +7622,10 @@ a.anchor-link {
 </pre></div>
 <p>We extracted information such as flight number, launch site, payload, payload mass, orbit, customer, launch outcome, and booster landing status.</p>
 <h4 id="3.3-Data-Wrangling">3.3 Data Wrangling<a class="anchor-link" href="#3.3-Data-Wrangling">¶</a></h4><p>After collecting the data, we performed several data wrangling steps:</p>
+<p>Flowchart:</p>
+<p><code>[Start] -&gt; [Handle missing values] -&gt; [Convert data types] -&gt; [Feature engineering] -&gt; [Data cleaning] -&gt; [End]</code></p>
+<p>Key phrases: Missing value imputation, data type conversion, feature creation, data standardization</p>
+<p>GitHub URL: <a href="https://github.com/jacobsterling/data-science/blob/main/spacex_project/Module1_Lab2_spacex_data_wrangling.ipynb">Data Wrangling Lab</a></p>
 <ol>
 <li><p><strong>Handling missing values:</strong></p>
 <ul>
@@ -7661,7 +7673,12 @@ a.anchor-link {
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="4.-Exploratory-Data-Analysis">4. Exploratory Data Analysis<a class="anchor-link" href="#4.-Exploratory-Data-Analysis">¶</a></h2><h3 id="4.1-Key-Visualizations">4.1 Key Visualizations<a class="anchor-link" href="#4.1-Key-Visualizations">¶</a></h3><p>In this section, we present key visualizations that provide insights into our SpaceX Falcon 9 first stage landing prediction data.</p>
-<h4 id="4.1.1-Flight-Number-vs.-Payload-Mass">4.1.1 Flight Number vs. Payload Mass<a class="anchor-link" href="#4.1.1-Flight-Number-vs.-Payload-Mass">¶</a></h4><p>We visualized the relationship between Flight Number and Payload Mass to understand how payload mass has changed over time.</p>
+<h4 id="4.1.1-Launch-Site-Preferences:">4.1.1 Launch Site Preferences:<a class="anchor-link" href="#4.1.1-Launch-Site-Preferences:">¶</a></h4><ul>
+<li>Certain launch sites are used more frequently than others, with CCAFS SLC-40 being the most used.</li>
+<li>Different launch sites show varying success rates, which could be due to factors like site-specific conditions or the types of missions launched from each site.</li>
+</ul>
+<p><img alt="Launch Site by Flight Number" src="plots/launch_site_by_flight_number.png"/></p>
+<h4 id="4.1.2-Flight-Number-vs.-Payload-Mass">4.1.2 Flight Number vs. Payload Mass<a class="anchor-link" href="#4.1.2-Flight-Number-vs.-Payload-Mass">¶</a></h4><p>We visualized the relationship between Flight Number and Payload Mass to understand how payload mass has changed over time.</p>
 <div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">scatterplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'FlightNumber'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'PayloadMass'</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">df</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Flight Number vs. Payload Mass'</span><span class="p">)</span>
@@ -7669,8 +7686,9 @@ a.anchor-link {
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Payload Mass (kg)'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
+<p><img alt="Payload Mass by Flight Number" src="plots/payload_by_flight_number_trend.png"/></p>
 <p>This scatter plot shows the distribution of payload mass across different flights. We can observe any trends or patterns in payload mass as SpaceX conducted more launches.</p>
-<h4 id="4.1.2-Launch-Success-Rate-by-Orbit-Type">4.1.2 Launch Success Rate by Orbit Type<a class="anchor-link" href="#4.1.2-Launch-Success-Rate-by-Orbit-Type">¶</a></h4><p>We analyzed the success rate of launches for different orbit types.</p>
+<h4 id="4.1.3-Launch-Success-Rate-by-Orbit-Type">4.1.3 Launch Success Rate by Orbit Type<a class="anchor-link" href="#4.1.3-Launch-Success-Rate-by-Orbit-Type">¶</a></h4><p>We analyzed the success rate of launches for different orbit types.</p>
 <div class="highlight"><pre><span></span><span class="n">success_rate</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'Orbit'</span><span class="p">)[</span><span class="s1">'Class'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">success_rate</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">'bar'</span><span class="p">)</span>
@@ -7680,8 +7698,18 @@ a.anchor-link {
 <span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
+<p><img alt="Orbit Type Success Rate" src="plots/orbit_type_sucess_rate.png"/></p>
 <p>This bar chart displays the success rate for each orbit type, helping us identify which orbits have higher success rates for Falcon 9 first stage landings.</p>
-<h4 id="4.1.3-Launch-Success-Rate-Over-Time">4.1.3 Launch Success Rate Over Time<a class="anchor-link" href="#4.1.3-Launch-Success-Rate-Over-Time">¶</a></h4><p>We visualized how the success rate of launches has changed over time.</p>
+<h4 id="4.1.4-Relationship-between-Flight-Number-and-Orbit-Type:">4.1.4 Relationship between Flight Number and Orbit Type:<a class="anchor-link" href="#4.1.4-Relationship-between-Flight-Number-and-Orbit-Type:">¶</a></h4><ul>
+<li>In the LEO orbit, success seems to be related to the number of flights</li>
+<li>As the flight number increases, there appears to be a higher success rate for LEO missions</li>
+<li>Conversely, in the GTO orbit, there appears to be no clear relationship between flight number and success.</li>
+<li>The success rate for GTO missions seems more variable and less dependent on the number of flights.</li>
+</ul>
+<p><img alt="Flight Number by Orbit Type" src="plots/flight_number_orbit_type.png"/></p>
+<h4 id="4.1.5-Payload-Mass-vs.-Orbit:">4.1.5 Payload Mass vs. Orbit:<a class="anchor-link" href="#4.1.5-Payload-Mass-vs.-Orbit:">¶</a></h4><p>There's a clear relationship between payload mass and the target orbit, with certain orbits (like LEO - Low Earth Orbit) allowing for heavier payloads.</p>
+<p><img alt="Payload Mass vs. Orbit" src="plots/payload_by_orbit_type.png"/></p>
+<h4 id="4.1.6-Launch-Success-Rate-Over-Time">4.1.6 Launch Success Rate Over Time<a class="anchor-link" href="#4.1.6-Launch-Success-Rate-Over-Time">¶</a></h4><p>We visualized how the success rate of launches has changed over time.</p>
 <div class="highlight"><pre><span></span><span class="n">df</span><span class="p">[</span><span class="s1">'Year'</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">'Date'</span><span class="p">])</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
 <span class="n">yearly_success</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'Year'</span><span class="p">)[</span><span class="s1">'Class'</span><span class="p">]</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
@@ -7691,8 +7719,20 @@ a.anchor-link {
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Success Rate'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
 </pre></div>
+<p><img alt="Launch Success Rate by Year" src="plots/launch_success_rate_by_year.png"/></p>
 <p>This line plot shows the trend in launch success rates year by year, allowing us to see if SpaceX has improved its first stage landing success over time.</p>
-<p>These visualizations provide valuable insights into various aspects of the SpaceX Falcon 9 launches, including payload trends, orbit-specific success rates, feature correlations, and temporal patterns in launch success. These insights will inform our subsequent analysis and model development for predicting first stage landing success.</p>
+<p>These insights provide a comprehensive view of SpaceX's Falcon 9 launch operations, highlighting the company's technological progress, operational strategies, and the complex interplay of factors affecting launch and landing success. This information is crucial for understanding SpaceX's competitive advantage in the space launch market and for predicting future launch outcomes.</p>
+<p>GitHub URL for the completed EDA with data visualization lab: <a href="https://github.com/jacobsterling/data-science/blob/main/spacex_project/Module2_data_visualisation.ipynb">Module2_data_visualisation.ipynb</a></p>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell jp-MarkdownCell jp-Notebook-cell">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
+</div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h3 id="4.2-SQL-Query-Results">4.2 SQL Query Results<a class="anchor-link" href="#4.2-SQL-Query-Results">¶</a></h3><p>In this section, we present key findings from our SQL analysis of the SpaceX launch data:</p>
 <ol>
 <li><p>Launch Sites Beginning with 'CCA':
@@ -7772,70 +7812,26 @@ We identified launch sites that begin with 'CCA':</p>
 <li>Controlled (ocean): 3</li>
 </ul>
 </li>
+<li><p>Rank success count between 2010-06-04 and 2017-03-20: Rank the count of successful landings between 2010-06-04 and 2017-03-20</p>
+</li>
 </ol>
+<div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="n">Landing_Outcome</span><span class="p">,</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="k">Count</span><span class="w"> </span>
+<span class="w">   </span><span class="k">FROM</span><span class="w"> </span><span class="n">SPACEXTBL</span><span class="w"> </span>
+<span class="w">   </span><span class="k">WHERE</span><span class="w"> </span><span class="nb">Date</span><span class="w"> </span><span class="k">BETWEEN</span><span class="w"> </span><span class="s1">'2010-06-04'</span><span class="w"> </span><span class="k">AND</span><span class="w"> </span><span class="s1">'2017-03-20'</span><span class="w"> </span>
+<span class="w">   </span><span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">Landing_Outcome</span><span class="w"> </span>
+<span class="w">   </span><span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">Count</span><span class="w"> </span><span class="k">DESC</span>
+</pre></div>
+<p>Results:
+No attempt: 10
+Success (drone ship): 5
+Failure (drone ship): 5
+Success (ground pad): 3
+Controlled (ocean): 3
+Uncontrolled (ocean): 2
+Failure (parachute): 2
+Precluded (drone ship): 1</p>
 <p>These SQL query results provide valuable insights into SpaceX's launch history, success rates, payload capacities, and the evolution of their landing capabilities over time.</p>
-<h3 id="4.3-Interesting-Patterns-and-Insights">4.3 Interesting Patterns and Insights<a class="anchor-link" href="#4.3-Interesting-Patterns-and-Insights">¶</a></h3><p>Our exploratory data analysis revealed several interesting patterns and insights about SpaceX's Falcon 9 launches:</p>
-<ol>
-<li><p>Payload Mass Trends:</p>
-<ul>
-<li>The payload mass for Falcon 9 launches has generally increased over time.</li>
-<li>There's a wide range of payload masses, from very light payloads to heavy ones, showcasing the versatility of the Falcon 9 rocket.</li>
-</ul>
-</li>
-<li><p>Launch Success Rate Improvement:</p>
-<ul>
-<li>The success rate of Falcon 9 launches has improved significantly over the years.</li>
-<li>Early launches had lower success rates, but recent years show a marked improvement, likely due to technological advancements and learning from previous missions.</li>
-</ul>
-</li>
-<li><p>Launch Site Preferences:</p>
-<ul>
-<li>Certain launch sites are used more frequently than others, with CCAFS SLC-40 being the most used.</li>
-<li>Different launch sites show varying success rates, which could be due to factors like site-specific conditions or the types of missions launched from each site.</li>
-</ul>
-</li>
-<li><p>Orbit Type Impact:</p>
-<ul>
-<li>The success rate varies depending on the intended orbit of the payload.</li>
-<li>Some orbits (like GTO - Geosynchronous Transfer Orbit) seem to have lower success rates, possibly due to the higher energy requirements for these missions.</li>
-</ul>
-</li>
-<li><p>Booster Version Evolution:</p>
-<ul>
-<li>Newer versions of the Falcon 9 booster show improved performance and higher success rates.</li>
-<li>The transition from v1.0 to later versions (like Block 5) corresponds with increased payload capacity and landing success rates.</li>
-</ul>
-</li>
-<li><p>Reusability Impact:</p>
-<ul>
-<li>As SpaceX began to reuse first stages, we see a trend of increased launch frequency and improved success rates.</li>
-<li>Reused boosters show comparable or even better success rates than new ones, validating SpaceX's reusability strategy.</li>
-</ul>
-</li>
-<li><p>Payload Mass vs. Orbit:</p>
-<ul>
-<li>There's a clear relationship between payload mass and the target orbit, with certain orbits (like LEO - Low Earth Orbit) allowing for heavier payloads.</li>
-</ul>
-</li>
-<li><p>Landing Success Factors:</p>
-<ul>
-<li>Factors like grid fins, number of flights, and landing site (drone ship vs. ground pad) show correlations with landing success.</li>
-<li>Drone ship landings, while more challenging, have become increasingly successful over time.</li>
-</ul>
-</li>
-<li><p>Customer Diversity:</p>
-<ul>
-<li>SpaceX has a diverse customer base, including commercial, government, and internal (Starlink) missions.</li>
-<li>Different customers seem to have different payload mass requirements and target orbits.</li>
-</ul>
-</li>
-<li><p>Seasonal Patterns:</p>
-<ul>
-<li>While not strongly pronounced, there might be slight seasonal variations in launch frequency, possibly due to weather conditions or operational factors.</li>
-</ul>
-</li>
-</ol>
-<p>These insights provide a comprehensive view of SpaceX's Falcon 9 launch operations, highlighting the company's technological progress, operational strategies, and the complex interplay of factors affecting launch and landing success. This information is crucial for understanding SpaceX's competitive advantage in the space launch market and for predicting future launch outcomes.</p>
+<p>GitHub URL for the completed EDA with SQL lab: <a href="https://github.com/jacobsterling/data-science/blob/main/spacex_project/Module2_sqllite.ipynb">Module2_sqllite.ipynb</a></p>
 </div>
 </div>
 </div>
@@ -7849,45 +7845,59 @@ We identified launch sites that begin with 'CCA':</p>
 <h2 id="5.-Interactive-Visual-Analytics">5. Interactive Visual Analytics<a class="anchor-link" href="#5.-Interactive-Visual-Analytics">¶</a></h2><h3 id="5.1-Folium-Map-of-Launch-Sites">5.1 Folium Map of Launch Sites<a class="anchor-link" href="#5.1-Folium-Map-of-Launch-Sites">¶</a></h3><p>We created an interactive map using Folium to visualize the SpaceX launch sites and their proximities. Here are the key features and findings from our map:</p>
 <ol>
 <li><p>Launch Site Markers:
-We plotted all SpaceX launch sites on the map using distinct markers. Each marker includes information about the site and its success rate.</p>
-<div class="highlight"><pre><span></span><span class="c1"># Example code for adding a marker</span>
-<span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span>
-    <span class="p">[</span><span class="n">latitude</span><span class="p">,</span> <span class="n">longitude</span><span class="p">],</span>
-    <span class="n">popup</span><span class="o">=</span><span class="sa">f</span><span class="s2">"Launch Site: </span><span class="si">{</span><span class="n">site_name</span><span class="si">}</span><span class="s2">&lt;br&gt;Success Rate: </span><span class="si">{</span><span class="n">success_rate</span><span class="si">}</span><span class="s2">%"</span><span class="p">,</span>
-    <span class="n">icon</span><span class="o">=</span><span class="n">folium</span><span class="o">.</span><span class="n">Icon</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="s1">'red'</span><span class="p">,</span> <span class="n">icon</span><span class="o">=</span><span class="s1">'rocket'</span><span class="p">,</span> <span class="n">prefix</span><span class="o">=</span><span class="s1">'fa'</span><span class="p">)</span>
-<span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">site_map</span><span class="p">)</span>
-</pre></div>
-</li>
-<li><p>Proximity Analysis:
-We calculated and visualized the distances from each launch site to nearby features such as railways, highways, and coastlines.</p>
-<div class="highlight"><pre><span></span><span class="c1"># Example distance calculation</span>
-<span class="n">distance</span> <span class="o">=</span> <span class="n">calculate_distance</span><span class="p">(</span><span class="n">site_lat</span><span class="p">,</span> <span class="n">site_lon</span><span class="p">,</span> <span class="n">feature_lat</span><span class="p">,</span> <span class="n">feature_lon</span><span class="p">)</span>
-</pre></div>
-</li>
-<li><p>Mouse Position Tracking:
-We added a MousePosition plugin to the map, allowing users to easily determine the coordinates of any point on the map.</p>
-<div class="highlight"><pre><span></span><span class="n">formatter</span> <span class="o">=</span> <span class="s2">"function(num) {return L.Util.formatNum(num, 5);};"</span>
-<span class="n">mouse_position</span> <span class="o">=</span> <span class="n">MousePosition</span><span class="p">(</span>
-    <span class="n">position</span><span class="o">=</span><span class="s1">'topright'</span><span class="p">,</span>
-    <span class="n">separator</span><span class="o">=</span><span class="s1">' Long: '</span><span class="p">,</span>
-    <span class="n">prefix</span><span class="o">=</span><span class="s1">'Lat:'</span><span class="p">,</span>
-    <span class="n">lat_formatter</span><span class="o">=</span><span class="n">formatter</span><span class="p">,</span>
-    <span class="n">lng_formatter</span><span class="o">=</span><span class="n">formatter</span><span class="p">,</span>
-<span class="p">)</span>
-<span class="n">site_map</span><span class="o">.</span><span class="n">add_child</span><span class="p">(</span><span class="n">mouse_position</span><span class="p">)</span>
-</pre></div>
-</li>
-<li><p>Distance Visualization:
-We drew lines between launch sites and nearby features to visually represent distances.</p>
-<div class="highlight"><pre><span></span><span class="n">folium</span><span class="o">.</span><span class="n">PolyLine</span><span class="p">(</span>
-    <span class="n">locations</span><span class="o">=</span><span class="p">[</span><span class="n">launch_site</span><span class="p">,</span> <span class="n">closest_city</span><span class="p">],</span>
-    <span class="n">color</span><span class="o">=</span><span class="s1">'green'</span><span class="p">,</span>
-    <span class="n">weight</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
-    <span class="n">opacity</span><span class="o">=</span><span class="mf">0.8</span>
-<span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">site_map</span><span class="p">)</span>
+We plotted all SpaceX launch sites on the map using distinct markers.</p>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">launch_sites_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+   <span class="n">coordinate</span> <span class="o">=</span> <span class="p">[</span><span class="n">site</span><span class="p">[</span><span class="s1">'Lat'</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s1">'Long'</span><span class="p">]]</span>
+   <span class="n">circle</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Circle</span><span class="p">(</span>
+      <span class="n">coordinate</span><span class="p">,</span>
+      <span class="n">radius</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span>
+      <span class="n">color</span><span class="o">=</span><span class="s1">'#d35400'</span><span class="p">,</span>
+      <span class="n">fill</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+      <span class="n">fillColor</span><span class="o">=</span><span class="s1">'#d35400'</span>
+   <span class="p">)</span>
+   <span class="n">marker</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span>
+      <span class="n">coordinate</span><span class="p">,</span>
+      <span class="n">icon</span><span class="o">=</span><span class="n">folium</span><span class="o">.</span><span class="n">DivIcon</span><span class="p">(</span>
+            <span class="n">icon_size</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span>
+            <span class="n">icon_anchor</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+            <span class="n">html</span><span class="o">=</span><span class="sa">f</span><span class="s1">'&lt;div style="font-size: 12px; color:#d35400;"&gt;&lt;b&gt;</span><span class="si">{</span><span class="n">site</span><span class="p">[</span><span class="s2">"Launch Site"</span><span class="p">]</span><span class="si">}</span><span class="s1">&lt;/b&gt;&lt;/div&gt;'</span>
+      <span class="p">)</span>
+   <span class="p">)</span>
+   <span class="n">circle</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">site_map</span><span class="p">)</span>
+   <span class="n">marker</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">site_map</span><span class="p">)</span>
 </pre></div>
 </li>
 </ol>
+<p><img alt="All Launch Sites" src="plots/all_launch_sites.png"/></p>
+<ol start="2">
+<li>Launch Records Per Site On The Map:
+We calculated and visualized the distances from each launch site to nearby features such as railways, highways, and coastlines.</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">launch</span> <span class="ow">in</span> <span class="n">spacex_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+   <span class="c1"># Create a marker for each launch</span>
+   <span class="n">marker</span> <span class="o">=</span> <span class="n">folium</span><span class="o">.</span><span class="n">Marker</span><span class="p">(</span>
+      <span class="p">[</span><span class="n">launch</span><span class="p">[</span><span class="s1">'Lat'</span><span class="p">],</span> <span class="n">launch</span><span class="p">[</span><span class="s1">'Long'</span><span class="p">]],</span>
+      <span class="n">icon</span><span class="o">=</span><span class="n">folium</span><span class="o">.</span><span class="n">Icon</span><span class="p">(</span><span class="n">color</span><span class="o">=</span><span class="n">launch</span><span class="p">[</span><span class="s1">'marker_color'</span><span class="p">],</span> <span class="n">icon</span><span class="o">=</span><span class="s1">'info-sign'</span><span class="p">),</span>
+      <span class="n">popup</span><span class="o">=</span><span class="sa">f</span><span class="s2">"Launch Site: </span><span class="si">{</span><span class="n">launch</span><span class="p">[</span><span class="s1">'Launch Site'</span><span class="p">]</span><span class="si">}</span><span class="s2">&lt;br&gt;Outcome: </span><span class="si">{</span><span class="s1">'Success'</span><span class="w"> </span><span class="k">if</span><span class="w"> </span><span class="n">launch</span><span class="p">[</span><span class="s1">'class'</span><span class="p">]</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="mi">1</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="s1">'Failure'</span><span class="si">}</span><span class="s2">"</span>
+   <span class="p">)</span>
+   <span class="c1"># Add the marker to the cluster</span>
+   <span class="n">marker</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">marker_cluster</span><span class="p">)</span>
+</pre></div>
+<p><img alt="Launch Records Per Site On The Map" src="plots/all_launch_records_per_site_on_the_map%20.png"/></p>
+<ol start="3">
+<li>Launch Sites’ Proximities<ul>
+<li>Plotted proximities such as railway, highway, coastline, with distance calculated and displayed</li>
+</ul>
+</li>
+</ol>
+<div class="highlight"><pre><span></span><span class="n">folium</span><span class="o">.</span><span class="n">PolyLine</span><span class="p">(</span>
+      <span class="n">locations</span><span class="o">=</span><span class="p">[</span><span class="n">launch_site</span><span class="p">,</span> <span class="n">closest_city</span><span class="p">],</span>
+      <span class="n">color</span><span class="o">=</span><span class="s1">'green'</span><span class="p">,</span>
+      <span class="n">weight</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span>
+      <span class="n">opacity</span><span class="o">=</span><span class="mf">0.8</span>
+<span class="p">)</span><span class="o">.</span><span class="n">add_to</span><span class="p">(</span><span class="n">site_map</span><span class="p">)</span>
+</pre></div>
+<p><img alt="Launch Site With Proximities" src="plots/launch_site_with_proximities.png"/></p>
 <p>Key Findings:</p>
 <ol>
 <li>Coastline Proximity: All launch sites are located close to the coastline. For example, CCAFS SLC-40 is approximately 0.51 km from the nearest coastline point.</li>
@@ -7953,6 +7963,13 @@ A pie chart displays the success rate of launches, either for all sites or for a
     <span class="k">return</span> <span class="n">fig</span>
 </pre></div>
 </li>
+</ol>
+<p><img alt="Pie1" src="plots/dash_board_pie1.png"/></p>
+<p>This pie chart illustrates the distribution of successful launches across all SpaceX launch sites. Each slice represents a different launch site, with the size of the slice proportional to the number of successful launches from that site. This visualization allows us to quickly compare the success rates of different launch sites.</p>
+<p>From the chart, we can observe that KSC LC-39A has the largest slice, indicating it has the highest number of successful launches among all sites. This observation is further confirmed in the Pie2 plot below, which shows a more detailed breakdown of success rates for this specific site.</p>
+<p>The ability to switch between an overview of all sites and detailed views of individual sites (as shown in Pie2) demonstrates the interactive nature of the dashboard, allowing users to drill down into specific data points of interest.</p>
+<p><img alt="Pie2" src="plots/dash_board_pie2.png"/></p>
+<ol start="4">
 <li><p>Payload Range Slider:
 Users can filter the data based on payload mass using a range slider.</p>
 <div class="highlight"><pre><span></span><span class="n">dcc</span><span class="o">.</span><span class="n">RangeSlider</span><span class="p">(</span>
@@ -7985,6 +8002,7 @@ A scatter plot shows the correlation between payload mass and launch success, wi
 </pre></div>
 </li>
 </ol>
+<p><img alt="Slider1" src="plots/payload_slider.png"/></p>
 <p>This interactive dashboard allows users to explore SpaceX launch data, visualize success rates for different launch sites, and analyze the relationship between payload mass and launch success. The combination of dropdown selection, range slider, pie chart, and scatter plot provides a comprehensive and user-friendly interface for data exploration.</p>
 </div>
 </div>
@@ -8096,25 +8114,50 @@ Accuracy on test data: 0.8333333333333334</p>
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
 <h2 id="7.-Conclusion">7. Conclusion<a class="anchor-link" href="#7.-Conclusion">¶</a></h2><p>In this comprehensive analysis of SpaceX Falcon 9 launches, we have gained valuable insights into the factors influencing the successful landing of the first stage. Our key findings include:</p>
 <ol>
-<li><p>Model Performance: The [Insert best performing model] demonstrated the highest accuracy of [Insert best accuracy] in predicting landing outcomes, outperforming other machine learning algorithms tested.</p>
-</li>
-<li><p>Critical Features: We identified [Insert important feature 1], [Insert important feature 2], and [Insert important feature 3] as the most influential factors in determining landing success.</p>
-</li>
-<li><p>Launch Cost Estimation: By accurately predicting landing outcomes, we can better estimate the cost of future launches, as successful landings significantly reduce expenses through rocket reusability.</p>
-</li>
+<li>EDA with Data Visualization:</li>
 </ol>
+<ul>
+<li>Payload mass for Falcon 9 launches has generally increased over time, demonstrating the rocket's evolving capabilities.</li>
+<li>Launch success rates have improved significantly, particularly in recent years.</li>
+<li>Different orbit types show varying success rates, with some (like GTO) having lower success rates due to higher energy requirements.</li>
+</ul>
+<ol start="2">
+<li>EDA with SQL:</li>
+</ol>
+<ul>
+<li>CCAFS LC-40 was identified as the most frequently used launch site.</li>
+<li>The total payload mass for NASA CRS missions was 48,213 kg.</li>
+<li>The first successful landing occurred on 2010-06-04.</li>
+<li>Between 2010-06-04 and 2017-03-20, "No attempt" was the most common landing outcome, followed by equal numbers of successful and failed drone ship landings.</li>
+</ul>
+<ol start="3">
+<li>Interactive Visual Analytics:</li>
+</ol>
+<ul>
+<li>The Folium map revealed that all launch sites are located close to coastlines, maintaining safe distances from populated areas.</li>
+<li>Launch sites are generally accessible by both rail and road, with distances varying by site.</li>
+<li>The Plotly Dash dashboard showed a correlation between payload mass and launch success, with certain payload ranges having higher success rates.</li>
+</ul>
+<ol start="4">
+<li>Classification Model Results:</li>
+</ol>
+<ul>
+<li>The Support Vector Machine (SVM) model demonstrated the highest accuracy of 0.8333 in predicting landing outcomes, outperforming other machine learning algorithms tested.</li>
+<li>We identified Payload Mass, Orbit Type, and Launch Site as the most influential factors in determining landing success.</li>
+</ul>
 <p>These findings have significant implications for both SpaceX and its competitors:</p>
 <ul>
 <li>For SpaceX: The company can leverage this predictive model to optimize launch parameters, potentially increasing their success rate and further reducing costs.</li>
 <li>For Competitors: This analysis provides a benchmark for the industry, highlighting the importance of reusability in maintaining a competitive edge in the commercial space sector.</li>
 </ul>
+<p>Launch Cost Estimation: By accurately predicting landing outcomes, we can better estimate the cost of future launches, as successful landings significantly reduce expenses through rocket reusability.</p>
 <p>Areas for further analysis include:</p>
-<ol>
+<ul>
 <li>Incorporating real-time weather and atmospheric data to enhance prediction accuracy.</li>
 <li>Exploring the impact of technological advancements on landing success rates over time.</li>
 <li>Analyzing the long-term economic benefits of reusability in the space industry.</li>
-</ol>
-<p>In conclusion, this project demonstrates the power of data science in revolutionizing the space industry, providing actionable insights that can drive innovation and cost-effectiveness in space exploration and satellite deployment.</p>
+</ul>
+<p>In conclusion, this project demonstrates the power of data science in revolutionizing the space industry, providing actionable insights that can drive innovation and cost-effectiveness in space exploration and satellite deployment. The combination of exploratory data analysis, SQL querying, interactive visualizations, and machine learning modeling has provided a comprehensive understanding of the factors influencing successful Falcon 9 first stage landings.</p>
 </div>
 </div>
 </div>
@@ -8125,27 +8168,14 @@ Accuracy on test data: 0.8333333333333334</p>
 </div>
 <div class="jp-InputArea jp-Cell-inputArea"><div class="jp-InputPrompt jp-InputArea-prompt">
 </div><div class="jp-RenderedHTMLCommon jp-RenderedMarkdown jp-MarkdownOutput" data-mime-type="text/markdown">
-<h2 id="8.-Additional-Creative-Elements">8. Additional Creative Elements<a class="anchor-link" href="#8.-Additional-Creative-Elements">¶</a></h2><ol>
-<li><p>SpaceX Falcon 9 Launch Infographic
+<h2 id="8.-Additional-Creative-Elements">8. Additional Creative Elements<a class="anchor-link" href="#8.-Additional-Creative-Elements">¶</a></h2><p>SpaceX Falcon 9 Launch Infographic
 This visual illustrates the key components of Falcon 9 and their role in successful landings,
 helping to visualize the critical features identified in our analysis.
 <img alt="SpaceX Falcon 9 Infographic" src="falcon9_infographic.png"/></p>
-</li>
-<li><p>Launch Success Rate Over Time
-<img alt="Launch Success Rate Over Time" src="launch_success_rate_by_year.png"/>
-This graph from the data visualization notebook would support our conclusion about SpaceX's improving success rate.</p>
-</li>
-<li><p>Launch Sites Map
-These maps show all SpaceX launch sites with their success rates, providing geographical context to our analysis.
-<img alt="Launch Sites Map 1" src="LaunchSitesMap1.png"/>
-<img alt="Launch Sites Map 2" src="LaunchSitesMap2.png"/></p>
-</li>
-<li><p>ROC Curve Comparison
+<p>ROC Curve Comparison
 This graph from the predictive analysis notebook supports our model performance comparisons.
 It shows the ROC curves for different models tested, allowing us to visually compare their performance.
 <img alt="ROC Curve Comparison" src="ROCCurve.png"/></p>
-</li>
-</ol>
 <p>These visuals would significantly enhance the presentation of our findings, making the analysis more engaging and easier to understand for a wide audience.</p>
 </div>
 </div>
